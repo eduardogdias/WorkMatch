@@ -44,7 +44,22 @@ public class Vaga {
     @Enumerated(EnumType.STRING)
     private Estado estado;
 
+    private int match;
+
     @ManyToOne
     @JoinColumn(name = "empresa_id")
     private Empresa empresa;
+
+    // construtor sem id
+    public Vaga(String cargo, Date dataFim, int experiencia, NivelIngles nivelIngles, ModeloTrabalho modeloTrabalho, Formacao formacao, Estado estado, int match, Empresa empresa) {
+        this.cargo = cargo;
+        this.dataFim = dataFim;
+        this.experiencia = experiencia;
+        this.nivelIngles = nivelIngles;
+        this.modeloTrabalho = modeloTrabalho;
+        this.formacao = formacao;
+        this.estado = estado;
+        this.match = match;
+        this.empresa = empresa;
+    }
 }
