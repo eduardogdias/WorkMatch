@@ -20,12 +20,18 @@ public class VagaController {
     private VagaService service;
 
     @GetMapping
-    public ResponseEntity<List<VagaResponseDTO>> listar(@RequestParam(required = false) Integer pagina,
-                                                        @RequestParam(required = false) Integer itens,
-                                                        @RequestParam(required = false) ModeloTrabalho modelo){
+    public ResponseEntity<List<VagaResponseDTO>> listar(){
+        return ResponseEntity.ok(service.list());
+    }
 
-        return ResponseEntity.ok(service.list(pagina, itens, modelo));
+    @GetMapping("/paginacao")
+    public ResponseEntity<List<VagaResponseDTO>> listarPaginacao(@RequestParam(required = true) Integer pagina, @RequestParam(required = true) Integer itens){
+        return ResponseEntity.ok(service.list(pagina, itens));
+    }
 
+    @GetMapping("/trabalho")
+    public ResponseEntity<List<VagaResponseDTO>> listarModelo(@RequestParam(required = true) ModeloTrabalho modelo){
+        return ResponseEntity.ok(service.list(modelo));
     }
 
 

@@ -28,11 +28,11 @@ public class EmpresaService {
     }
 
     public Empresa findEntityById(Long id){
-        Optional<Empresa> empresa = repository.findById(id);
-        if(empresa.isEmpty()){
+        Optional<Empresa> entity = repository.findById(id);
+        if(entity.isEmpty()){
             throw new EntidadeNaoEncontrada("Empresa não encontrada");
         }
-        return empresa.get();
+        return entity.get();
     }
 
 

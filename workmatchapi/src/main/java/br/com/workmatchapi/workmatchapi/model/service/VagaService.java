@@ -30,27 +30,26 @@ public class VagaService {
     @Autowired
     private EmpresaService empresaService;
 
-    public List<VagaResponseDTO> list(Integer pagina, Integer itens, ModeloTrabalho modelo){
-
-        if(pagina != null && itens != null){
-            Page<Vaga> paginaEntities = repository.findAll(PageRequest.of(pagina, itens));
-            return paginaEntities.map(mapper::toDTO).getContent();
-        }
-
-        if(modelo != null){
-            return mapper.toListDTO(repository.findByModeloTrabalho(modelo));
-        }
-
+    public List<VagaResponseDTO> list(){
         return mapper.toListDTO(repository.findAll());
+    }
+
+    public List<VagaResponseDTO> list(Integer pagina, Integer itens){
+        Page<Vaga> paginaEntities = repository.findAll(PageRequest.of(pagina, itens));
+        return paginaEntities.map(mapper::toDTO).getContent();
+    }
+
+    public List<VagaResponseDTO> list(ModeloTrabalho modelo){
+        return mapper.toListDTO(repository.findByModeloTrabalho(modelo));
     }
 
 
     public Vaga findEntityById(Long id){
-        Optional<Vaga> vaga = repository.findById(id);
-        if(vaga.isEmpty()){
+        Optional<Vaga> entity = repository.findById(id);
+        if(entity.isEmpty()){
             throw new EntidadeNaoEncontrada("Vaga não encontrada");
         }
-        return vaga.get();
+        return entity.get();
     }
 
     public VagaResponseDTO findById(Long id){

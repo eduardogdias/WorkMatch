@@ -31,4 +31,11 @@ public class Usuario {
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private Curriculo curriculo;
 
+    public Usuario(String nome, String email, String telefone, String cpf, String senha) {
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.cpf = cpf;
+        this.senha = senha;
+    }
 }
