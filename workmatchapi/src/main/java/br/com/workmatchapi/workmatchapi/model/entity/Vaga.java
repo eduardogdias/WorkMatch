@@ -25,6 +25,8 @@ public class Vaga {
 
     private String cargo;
 
+    private Double salario;
+
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dataFim;
 
@@ -51,8 +53,9 @@ public class Vaga {
     private Empresa empresa;
 
     // construtor sem id
-    public Vaga(String cargo, Date dataFim, int experiencia, NivelIngles nivelIngles, ModeloTrabalho modeloTrabalho, Formacao formacao, Estado estado, int match, Empresa empresa) {
+    public Vaga(String cargo, Double salario, Date dataFim, int experiencia, NivelIngles nivelIngles, ModeloTrabalho modeloTrabalho, Formacao formacao, Estado estado, int match, Empresa empresa) {
         this.cargo = cargo;
+        this.salario = salario;
         this.dataFim = dataFim;
         this.experiencia = experiencia;
         this.nivelIngles = nivelIngles;

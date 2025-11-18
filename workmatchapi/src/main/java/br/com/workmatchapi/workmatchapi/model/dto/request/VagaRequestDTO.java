@@ -15,6 +15,10 @@ public record VagaRequestDTO(
         @NotBlank(message = "O cargo é obrigatório")
         String cargo,
 
+        @NotNull(message = "O salário é obrigatório")
+        @Positive(message = "O salário deve ser maior que R$0,00")
+        Double salario,
+
         @NotNull(message = "A data de término da vaga é obrigatória")
         @Future(message = "A data de término precisa ser futura")
         Date dataFim,

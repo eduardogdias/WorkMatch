@@ -12,7 +12,7 @@ import java.util.List;
 public class EmpresaMapper {
 
     public EmpresaResponseDTO toDTO(Empresa entity){
-        EmpresaResponseDTO dto = new EmpresaResponseDTO(entity.getNome(), entity.getCnpj(), entity.getEmail(), entity.getTelefone());
+        EmpresaResponseDTO dto = new EmpresaResponseDTO(entity.getId(), entity.getNome(), entity.getCnpj(), entity.getEmail(), entity.getTelefone());
         return dto;
     }
 

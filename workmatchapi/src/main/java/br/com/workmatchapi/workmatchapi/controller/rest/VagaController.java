@@ -2,6 +2,7 @@ package br.com.workmatchapi.workmatchapi.controller.rest;
 
 import br.com.workmatchapi.workmatchapi.model.dto.request.VagaRequestDTO;
 import br.com.workmatchapi.workmatchapi.model.dto.response.VagaResponseDTO;
+import br.com.workmatchapi.workmatchapi.model.enums.ModeloTrabalho;
 import br.com.workmatchapi.workmatchapi.model.service.VagaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,14 @@ public class VagaController {
     private VagaService service;
 
     @GetMapping
-    public ResponseEntity<List<VagaResponseDTO>> listar(){
-        return ResponseEntity.ok(service.listaAll());
+    public ResponseEntity<List<VagaResponseDTO>> listar(@RequestParam(required = false) Integer pagina,
+                                                        @RequestParam(required = false) Integer itens,
+                                                        @RequestParam(required = false) ModeloTrabalho modelo){
+
+        return ResponseEntity.ok(service.list(pagina, itens, modelo));
+
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<VagaResponseDTO> buscarPorId(@PathVariable Long id){

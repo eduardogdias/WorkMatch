@@ -4,10 +4,15 @@ import br.com.workmatchapi.workmatchapi.model.dto.request.VagaRequestDTO;
 import br.com.workmatchapi.workmatchapi.model.dto.response.VagaResponseDTO;
 import br.com.workmatchapi.workmatchapi.model.entity.Empresa;
 import br.com.workmatchapi.workmatchapi.model.entity.Vaga;
+import br.com.workmatchapi.workmatchapi.model.enums.ModeloTrabalho;
 import br.com.workmatchapi.workmatchapi.model.exception.EntidadeNaoEncontrada;
 import br.com.workmatchapi.workmatchapi.model.mapper.VagaMapper;
 import br.com.workmatchapi.workmatchapi.model.repository.VagaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,10 +30,20 @@ public class VagaService {
     @Autowired
     private EmpresaService empresaService;
 
-    public List<VagaResponseDTO> listaAll(){
-        List<Vaga> entities = repository.findAll();
-        return mapper.toListDTO(entities);
+    public List<VagaResponseDTO> list(Integer pagina, Integer itens, ModeloTrabalho modelo){
+
+        if(pagina != null && itens != null){
+            Page<Vaga> paginaEntities = repository.findAll(PageRequest.of(pagina, itens));
+            return paginaEntities.map(mapper::toDTO).getContent();
+        }
+
+        if(modelo != null){
+            return mapper.toListDTO(repository.findByModeloTrabalho(modelo));
+        }
+
+        return mapper.toListDTO(repository.findAll());
     }
+
 
     public Vaga findEntityById(Long id){
         Optional<Vaga> vaga = repository.findById(id);
