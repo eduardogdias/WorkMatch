@@ -10,7 +10,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="TB_VAGA")
@@ -48,12 +50,21 @@ public class Vaga {
 
     private int match;
 
+    @ElementCollection
+    @CollectionTable(
+            name = "vaga_skills",
+            joinColumns = @JoinColumn(name = "vaga_id"))
+    @Column(name = "skill")
+    private List<String> skills = new ArrayList<>();
+
+
     @ManyToOne
     @JoinColumn(name = "empresa_id")
     private Empresa empresa;
 
     // construtor sem id
-    public Vaga(String cargo, Double salario, Date dataFim, int experiencia, NivelIngles nivelIngles, ModeloTrabalho modeloTrabalho, Formacao formacao, Estado estado, int match, Empresa empresa) {
+
+    public Vaga(String cargo, Double salario, Date dataFim, int experiencia, NivelIngles nivelIngles, ModeloTrabalho modeloTrabalho, Formacao formacao, Estado estado, int match, List<String> skills, Empresa empresa) {
         this.cargo = cargo;
         this.salario = salario;
         this.dataFim = dataFim;
@@ -63,6 +74,7 @@ public class Vaga {
         this.formacao = formacao;
         this.estado = estado;
         this.match = match;
+        this.skills = skills;
         this.empresa = empresa;
     }
 }

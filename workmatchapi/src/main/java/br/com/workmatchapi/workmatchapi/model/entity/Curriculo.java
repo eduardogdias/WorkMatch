@@ -8,6 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name="TB_CURRICULO")
 @Data
@@ -31,15 +34,23 @@ public class Curriculo {
     @Enumerated(EnumType.STRING)
     private Estado estado;
 
+    @ElementCollection
+    @CollectionTable(
+            name = "curriculo_skills",
+            joinColumns = @JoinColumn(name = "curriculo_id"))
+    @Column(name = "skill")
+    private List<String> skills = new ArrayList<>();
+
     @OneToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    public Curriculo(Formacao formacao, int experiencia, NivelIngles nivelIngles, Estado estado, Usuario usuario) {
+    public Curriculo(Formacao formacao, int experiencia, NivelIngles nivelIngles, Estado estado, List<String> skills, Usuario usuario) {
         this.formacao = formacao;
         this.experiencia = experiencia;
         this.nivelIngles = nivelIngles;
         this.estado = estado;
+        this.skills = skills;
         this.usuario = usuario;
     }
 }

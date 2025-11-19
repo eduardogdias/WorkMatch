@@ -10,6 +10,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 
+import java.util.List;
+
 public record CurriculoRequestDTO(
         @NotNull(message = "A formação é obrigatória")
         Formacao formacao,
@@ -23,6 +25,9 @@ public record CurriculoRequestDTO(
 
         @NotNull(message = "O Estado é obrigatório")
         Estado estado,
+
+        @NotNull(message = "A lista de skills não pode ser nula")
+        List<String> skills,
 
         @NotNull(message = "O ID da empresa é obrigatório")
         @Positive(message = "O ID da empresa deve ser positivo")

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.*;
 
 import java.util.Date;
+import java.util.List;
 
 
 public record VagaResponseDTO(
@@ -23,6 +24,7 @@ public record VagaResponseDTO(
         Formacao formacao,
         String estado,
         int match,
+        List<String> skills,
         Empresa empresa
 ) {}
 

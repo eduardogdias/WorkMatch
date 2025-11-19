@@ -8,6 +8,7 @@ import jakarta.validation.constraints.*;
 
 
 import java.util.Date;
+import java.util.List;
 
 
 public record VagaRequestDTO(
@@ -41,6 +42,9 @@ public record VagaRequestDTO(
         @Min(value = 0, message = "O match mínimo é 0%")
         @Max(value = 100, message = "O match máximo é 100%")
         int match,
+
+        @NotNull(message = "A lista de skills não pode ser nula")
+        List<String> skills,
 
         @NotNull(message = "O ID da empresa é obrigatório")
         @Positive(message = "O ID da empresa deve ser positivo")

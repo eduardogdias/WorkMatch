@@ -13,12 +13,12 @@ import java.util.List;
 public class CurriculoMapper {
 
     public CurriculoResponseDTO toDTO(Curriculo entity){
-        CurriculoResponseDTO dto = new CurriculoResponseDTO(entity.getId(), entity.getFormacao(), entity.getExperiencia(), entity.getNivelIngles(), entity.getEstado().getNome(), entity.getUsuario());
+        CurriculoResponseDTO dto = new CurriculoResponseDTO(entity.getId(), entity.getFormacao(), entity.getExperiencia(), entity.getNivelIngles(), entity.getEstado().getNome(), entity.getSkills(), entity.getUsuario());
         return dto;
     }
 
     public Curriculo toEntity(CurriculoRequestDTO dto, Usuario usuario){
-        Curriculo entity = new Curriculo(dto.formacao(), dto.experiencia(), dto.nivelIngles(), dto.estado(), usuario);
+        Curriculo entity = new Curriculo(dto.formacao(), dto.experiencia(), dto.nivelIngles(), dto.estado(), dto.skills(), usuario);
         return entity;
     }
 

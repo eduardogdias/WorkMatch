@@ -55,6 +55,7 @@ public class CurriculoService {
         entity.setExperiencia(dto.experiencia());
         entity.setNivelIngles(dto.nivelIngles());
         entity.setEstado(dto.estado());
+        entity.setSkills(dto.skills());
         entity.setUsuario(usuario);
 
         return mapper.toDTO(repository.save(entity));

@@ -24,13 +24,14 @@ public class VagaMapper {
                 entity.getFormacao(),
                 entity.getEstado().getNome(),
                 entity.getMatch(),
+                entity.getSkills(),
                 entity.getEmpresa());
         return dto;
     }
 
 
     public Vaga toEntity(VagaRequestDTO dto, Empresa empresa){
-        Vaga entity = new Vaga(dto.cargo(), dto.salario(), dto.dataFim(), dto.experiencia(), dto.nivelIngles(), dto.modeloTrabalho(), dto.formacao(), dto.estado(), dto.match(), empresa);
+        Vaga entity = new Vaga(dto.cargo(), dto.salario(), dto.dataFim(), dto.experiencia(), dto.nivelIngles(), dto.modeloTrabalho(), dto.formacao(), dto.estado(), dto.match(), dto.skills(), empresa);
         return entity;
     }
 
