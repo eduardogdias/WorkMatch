@@ -63,7 +63,6 @@ public class VagaService {
 
     public VagaResponseDTO edit(Long id, VagaRequestDTO dto){
         Empresa empresa = empresaService.findEntityById(dto.empresaId());
-        System.out.println(empresa.getId() +" --- "+ empresa.getNome());
         Vaga entity = findEntityById(id);
         entity.setCargo(dto.cargo());
         entity.setDataFim(dto.dataFim());

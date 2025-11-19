@@ -22,7 +22,7 @@ public class Curriculo {
     @Enumerated(EnumType.STRING)
     private Formacao formacao;
 
-    private Integer experiencia;
+    private int experiencia;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "nivel_ingles")
@@ -35,4 +35,11 @@ public class Curriculo {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
+    public Curriculo(Formacao formacao, int experiencia, NivelIngles nivelIngles, Estado estado, Usuario usuario) {
+        this.formacao = formacao;
+        this.experiencia = experiencia;
+        this.nivelIngles = nivelIngles;
+        this.estado = estado;
+        this.usuario = usuario;
+    }
 }

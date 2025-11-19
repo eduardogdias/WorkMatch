@@ -1,5 +1,6 @@
 package br.com.workmatchapi.workmatchapi.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +30,7 @@ public class Usuario {
     private String senha;
 
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Curriculo curriculo;
 
     public Usuario(String nome, String email, String telefone, String cpf, String senha) {
