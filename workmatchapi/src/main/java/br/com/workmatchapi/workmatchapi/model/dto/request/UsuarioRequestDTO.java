@@ -1,6 +1,8 @@
 package br.com.workmatchapi.workmatchapi.model.dto.request;
 
+import br.com.workmatchapi.workmatchapi.model.enums.Role;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 public record UsuarioRequestDTO (
@@ -20,7 +22,10 @@ public record UsuarioRequestDTO (
         String cpf,
 
         @NotBlank(message = "A senha é obrigatória")
-        String senha
+        String senha,
+
+        @NotNull(message = "A Role é obrigatória")
+        Role role
 
 ){
 }

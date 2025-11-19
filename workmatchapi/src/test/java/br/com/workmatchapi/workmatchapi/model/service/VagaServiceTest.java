@@ -9,8 +9,7 @@ import br.com.workmatchapi.workmatchapi.model.enums.*;
 import br.com.workmatchapi.workmatchapi.model.exception.EntidadeNaoEncontrada;
 import br.com.workmatchapi.workmatchapi.model.mapper.VagaMapper;
 import br.com.workmatchapi.workmatchapi.model.repository.VagaRepository;
-import br.com.workmatchapi.workmatchapi.model.service.EmpresaService;
-import br.com.workmatchapi.workmatchapi.model.service.VagaService;
+
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

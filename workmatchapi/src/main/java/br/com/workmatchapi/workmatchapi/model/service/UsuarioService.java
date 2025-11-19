@@ -3,17 +3,21 @@ package br.com.workmatchapi.workmatchapi.model.service;
 import br.com.workmatchapi.workmatchapi.model.dto.request.UsuarioRequestDTO;
 import br.com.workmatchapi.workmatchapi.model.dto.response.UsuarioResponseDTO;
 import br.com.workmatchapi.workmatchapi.model.entity.Usuario;
+import br.com.workmatchapi.workmatchapi.model.enums.Role;
 import br.com.workmatchapi.workmatchapi.model.exception.EntidadeNaoEncontrada;
 import br.com.workmatchapi.workmatchapi.model.mapper.UsuarioMapper;
 import br.com.workmatchapi.workmatchapi.model.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsuarioService {
+public class UsuarioService implements UserDetailsService {
     
     @Autowired
     private UsuarioRepository repository;
@@ -41,7 +45,9 @@ public class UsuarioService {
     }
 
     public UsuarioResponseDTO save(UsuarioRequestDTO dto){
-        return mapper.toDTO(repository.save(mapper.toEntity(dto)));
+        Usuario entity = mapper.toEntity(dto);
+        entity.setRole(Role.USER);
+        return mapper.toDTO(repository.save(entity));
     }
 
     public UsuarioResponseDTO edit(Long id, UsuarioRequestDTO dto){
@@ -61,4 +67,8 @@ public class UsuarioService {
         return mapper.toDTO(entity);
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return repository.findByEmail(email);
+    }
 }

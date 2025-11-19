@@ -8,6 +8,7 @@ public record UsuarioResponseDTO(
         String nome,
         String email,
         String telefone,
-        String cpf
+        String cpf,
+        String role
 ) {
 }

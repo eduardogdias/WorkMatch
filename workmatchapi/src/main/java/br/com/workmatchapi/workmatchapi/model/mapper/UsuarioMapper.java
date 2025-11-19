@@ -12,12 +12,12 @@ import java.util.List;
 public class UsuarioMapper {
 
     public UsuarioResponseDTO toDTO(Usuario entity){
-        UsuarioResponseDTO dto = new UsuarioResponseDTO(entity.getId(), entity.getNome(), entity.getEmail(), entity.getTelefone(), entity.getCpf());
+        UsuarioResponseDTO dto = new UsuarioResponseDTO(entity.getId(), entity.getNome(), entity.getEmail(), entity.getTelefone(), entity.getCpf(), entity.getRole().name());
         return dto;
     }
 
     public Usuario toEntity(UsuarioRequestDTO dto){
-        Usuario entity = new Usuario(dto.nome(), dto.email(), dto.telefone(), dto.cpf(), dto.senha());
+        Usuario entity = new Usuario(dto.nome(), dto.email(), dto.telefone(), dto.cpf(), dto.senha(), dto.role());
         return entity;
     }
 
