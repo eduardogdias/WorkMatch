@@ -31,4 +31,14 @@ public class Candidatura {
     @Column(name = "data_candidatura")
     private Date dataCandidatura;
 
+    public Candidatura(Vaga vaga, Curriculo curriculo, Date dataCandidatura) {
+        this.vaga = vaga;
+        this.curriculo = curriculo;
+        this.dataCandidatura = dataCandidatura;
+    }
+
+    public Candidatura(Vaga vaga, Curriculo curriculo) {
+        this.vaga = vaga;
+        this.curriculo = curriculo;
+    }
 }
