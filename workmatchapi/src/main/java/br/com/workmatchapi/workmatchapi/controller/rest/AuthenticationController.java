@@ -2,9 +2,11 @@ package br.com.workmatchapi.workmatchapi.controller.rest;
 
 import br.com.workmatchapi.workmatchapi.model.dto.request.UsuarioLoginDTO;
 import br.com.workmatchapi.workmatchapi.model.dto.request.UsuarioRequestDTO;
+import br.com.workmatchapi.workmatchapi.model.dto.response.LoginResponseDTO;
 import br.com.workmatchapi.workmatchapi.model.entity.Usuario;
 import br.com.workmatchapi.workmatchapi.model.repository.UsuarioRepository;
 import br.com.workmatchapi.workmatchapi.model.service.UsuarioService;
+import br.com.workmatchapi.workmatchapi.security.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,12 +31,17 @@ public class AuthenticationController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping("/login")
     public ResponseEntity login(@Valid @RequestBody UsuarioLoginDTO dto){
         var userNamePassword = new UsernamePasswordAuthenticationToken(dto.email(), dto.senha());
         var auth = authenticationManager.authenticate(userNamePassword);
 
-        return ResponseEntity.ok().build();
+        var token = tokenService.gerarToken((Usuario) auth.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping("/register")

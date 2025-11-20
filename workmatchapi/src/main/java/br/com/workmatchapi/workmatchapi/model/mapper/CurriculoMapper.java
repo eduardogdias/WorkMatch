@@ -2,6 +2,7 @@ package br.com.workmatchapi.workmatchapi.model.mapper;
 
 import br.com.workmatchapi.workmatchapi.model.dto.request.CurriculoRequestDTO;
 import br.com.workmatchapi.workmatchapi.model.dto.response.CurriculoResponseDTO;
+import br.com.workmatchapi.workmatchapi.model.dto.response.UsuarioResponseDTO;
 import br.com.workmatchapi.workmatchapi.model.entity.Curriculo;
 import br.com.workmatchapi.workmatchapi.model.entity.Usuario;
 import org.springframework.stereotype.Component;
@@ -13,7 +14,22 @@ import java.util.List;
 public class CurriculoMapper {
 
     public CurriculoResponseDTO toDTO(Curriculo entity){
-        CurriculoResponseDTO dto = new CurriculoResponseDTO(entity.getId(), entity.getFormacao(), entity.getExperiencia(), entity.getNivelIngles(), entity.getEstado().getNome(), entity.getSkills(), entity.getUsuario());
+        UsuarioResponseDTO usuarioDTO = new UsuarioResponseDTO(
+                entity.getUsuario().getId(),
+                entity.getUsuario().getNome(),
+                entity.getUsuario().getEmail(),
+                entity.getUsuario().getTelefone(),
+                entity.getUsuario().getCpf(),
+                entity.getUsuario().getRole().name());
+
+        CurriculoResponseDTO dto = new CurriculoResponseDTO(
+                entity.getId(),
+                entity.getFormacao(),
+                entity.getExperiencia(),
+                entity.getNivelIngles(),
+                entity.getEstado().getNome(),
+                entity.getSkills(),
+                usuarioDTO);
         return dto;
     }
 

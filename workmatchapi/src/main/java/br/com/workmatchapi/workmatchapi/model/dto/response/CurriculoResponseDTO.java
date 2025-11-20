@@ -13,5 +13,5 @@ public record CurriculoResponseDTO(
         NivelIngles nivelIngles,
         String estado,
         List<String> skills,
-        Usuario usuario
+        UsuarioResponseDTO usuario
 ) {}
