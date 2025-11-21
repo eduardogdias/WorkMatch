@@ -24,6 +24,7 @@ public class WebSecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/web/login").permitAll()
+                        .requestMatchers("/web/cadastro").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
                         .requestMatchers("/web/vagas").authenticated()
                         .anyRequest().authenticated()

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,6 +47,10 @@ public class UsuarioService implements UserDetailsService {
 
     public UsuarioResponseDTO save(UsuarioRequestDTO dto){
         Usuario entity = mapper.toEntity(dto);
+
+        String senhaEncriptada = new BCryptPasswordEncoder().encode(dto.senha());
+
+        entity.setSenha(senhaEncriptada);
         entity.setRole(Role.USER);
         return mapper.toDTO(repository.save(entity));
     }
