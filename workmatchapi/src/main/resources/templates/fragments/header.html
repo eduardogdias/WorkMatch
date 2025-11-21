@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<header class="main-header">
+    <div class="logo">
+
+<!--        <img th:src="@{/logo.png}" alt="Logo">-->
+
+        WorkMatch
+    </div>
+
+    <nav class="menu">
+        <a th:href="@{/web/vagas}">Vagas</a>
+        <a th:href="@{/web/candidaturas}">Candidaturas</a>
+        <a th:href="@{/web/curriculos}">Currículo</a>
+    </nav>
+
+    <link rel="stylesheet" th:href="@{/header.css}">
+</header>
+</body>
+</html>
