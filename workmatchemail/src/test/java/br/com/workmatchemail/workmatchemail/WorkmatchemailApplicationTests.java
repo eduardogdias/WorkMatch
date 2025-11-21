@@ -1,0 +1,13 @@
+package br.com.workmatchemail.workmatchemail;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class WorkmatchemailApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
