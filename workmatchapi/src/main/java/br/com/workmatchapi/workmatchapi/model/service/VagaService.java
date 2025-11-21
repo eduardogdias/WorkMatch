@@ -63,6 +63,7 @@ public class VagaService {
         Empresa empresa = empresaService.findEntityById(dto.empresaId());
         Vaga entity = findEntityById(id);
         entity.setCargo(dto.cargo());
+        entity.setDescricao(dto.descricao());
         entity.setDataFim(dto.dataFim());
         entity.setExperiencia(dto.experiencia());
         entity.setNivelIngles(dto.nivelIngles());

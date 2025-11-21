@@ -16,6 +16,7 @@ public class VagaMapper {
         VagaResponseDTO dto = new VagaResponseDTO(
                 entity.getId(),
                 entity.getCargo(),
+                entity.getDescricao(),
                 entity.getSalario(),
                 entity.getDataFim(),
                 entity.getExperiencia(),
@@ -31,7 +32,7 @@ public class VagaMapper {
 
 
     public Vaga toEntity(VagaRequestDTO dto, Empresa empresa){
-        Vaga entity = new Vaga(dto.cargo(), dto.salario(), dto.dataFim(), dto.experiencia(), dto.nivelIngles(), dto.modeloTrabalho(), dto.formacao(), dto.estado(), dto.match(), dto.skills(), empresa);
+        Vaga entity = new Vaga(dto.cargo(), dto.descricao(), dto.salario(), dto.dataFim(), dto.experiencia(), dto.nivelIngles(), dto.modeloTrabalho(), dto.formacao(), dto.estado(), dto.match(), dto.skills(), empresa);
         return entity;
     }
 

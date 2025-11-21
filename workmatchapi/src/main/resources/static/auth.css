@@ -1,119 +1,97 @@
-/* ==== RESET ==== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Roboto, sans-serif;
-}
-
-/* ==== BODY ==== */
 body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f2f2f2; /* cinza claro */
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    margin: 0;
+    padding: 0;
 }
 
-/* ==== CONTAINER ==== */
 .container {
-  background-color: white;
-  border: 1px solid #888888; /* verde */
-  border-radius: 10px;
-  padding: 30px 40px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  width: 450px;
-  text-align: center;
+    max-width: 430px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    text-align: center;
 }
 
-/* ==== TÍTULOS ==== */
-.title {
-  color: #00b031;
-  font-size: 1.8rem;
+h2.title {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 26px;
 }
 
-/* ==== LOGO ==== */
-.container img {
-  width: 180px;
-  margin-bottom: 15px;
+img {
+    width: 250px;
+    margin-bottom: 20px;
 }
 
-/* ==== FORM ==== */
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+form {
+    text-align: left;
+    margin-top: 10px;
 }
 
-/* ==== CAMPOS ==== */
-.field {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
+label {
+    font-weight: bold;
+    color: #444;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 
-.field label {
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #333;
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    margin-bottom: 12px;
+    box-sizing: border-box; /* ← Alinha com o botão */
 }
 
-.field input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: border 0.2s;
+
+button {
+    width: 100%;
+    background-color: #23a8f2;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
-.field input:focus {
-  outline: none;
-  border-color: #2ecc71;
+button:hover {
+    background-color: #1772a5;
 }
 
-/* ==== BOTÃO ==== */
-.button button {
-  background-color: #00b031;
-  margin-top: 30px;
-  margin-bottom: 10px;
-  width: 100%;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 6px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s;
+p {
+    margin-top: 15px;
+    font-size: 14px;
 }
 
-.button button:hover {
-  background-color: #008080;
-}
-
-/* ==== LINKS ==== */
-.link {
-  margin-top: 15px;
-  color: #555;
-}
-
-.link a {
-  color: #008080;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.link a:hover {
-  text-decoration: underline;
-}
-
-/* ==== MENSAGENS ==== */
-.error {
-  color: #e74c3c;
-  margin-top: 10px;
+.alert {
+    margin-top: 12px;
+    padding: 10px;
+    background: #ffcccc;
+    color: #a30000;
+    border-radius: 6px;
+    text-align: center;
 }
 
 .success {
-  color: #2ecc71;
-  margin-top: 10px;
+    background: #c9f5d5;
+    color: #0e7a2f;
+}
+
+a {
+    color: #23a8f2;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }

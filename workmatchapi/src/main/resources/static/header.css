@@ -14,10 +14,6 @@
     width: auto;
 }
 
-.logo img {
-    font-size: 25px
-}
-
 .menu {
     display: flex;
     gap: 35px; /* espaço entre os links */

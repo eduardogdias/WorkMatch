@@ -57,8 +57,10 @@ CREATE TABLE TB_VAGA (
     estado VARCHAR(50),
     match INT,
     empresa_id BIGINT,
+    descricao VARCHAR(MAX),
     CONSTRAINT fk_vaga_empresa FOREIGN KEY (empresa_id) REFERENCES TB_EMPRESA(id)
 );
+
 
 -- tabela skills da vaga
 CREATE TABLE vaga_skills (

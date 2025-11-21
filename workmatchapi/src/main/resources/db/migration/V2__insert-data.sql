@@ -11,13 +11,74 @@ VALUES
 -- INSERT VAGAS
 -- ===============================
 INSERT INTO TB_VAGA
-(cargo, salario, data_fim, experiencia, nivel_ingles, modelo_trabalho, formacao, estado, match, empresa_id)
+(cargo, salario, data_fim, experiencia, nivel_ingles, modelo_trabalho, formacao, estado, match, empresa_id, descricao)
 VALUES
-('Desenvolvedor Backend Java', 8500.00, DATE '2025-12-31', 2, 'INTERMEDIARIO', 'HIBRIDO', 'GRADUACAO', 'SP', 80, 1),
-('Analista de Dados', 7000.00, DATE '2025-10-15', 1, 'AVANCADO', 'REMOTO', 'FUNDAMENTAL', 'RJ', 75, 2),
-('Dev Frontend React', 7800.00, DATE '2025-11-20', 2, 'INTERMEDIARIO', 'PRESENCIAL', 'GRADUACAO', 'SP', 70, 1),
-('Suporte Técnico', 3500.00, DATE '2025-09-30', 1, 'BASICO', 'PRESENCIAL', 'MEDIO', 'MG', 35, 3),
-('Cientista de Dados', 12000.00, DATE '2025-12-15', 3, 'AVANCADO', 'REMOTO', 'POS', 'SP', 15, 2);
+(
+ 'Desenvolvedor Backend Java',
+ 8500.00,
+ DATE '2025-12-31',
+ 2,
+ 'INTERMEDIARIO',
+ 'HIBRIDO',
+ 'GRADUACAO',
+ 'SP',
+ 80,
+ 1,
+ 'O desenvolvedor backend Java será responsável por criar e manter APIs de alta performance, colaborar com o time de produto para implementar novas funcionalidades e garantir a integração eficiente com diversos serviços internos. O dia a dia envolve participação em dailies, revisão de código e desenvolvimento contínuo de melhorias na arquitetura da plataforma.'
+),
+(
+ 'Analista de Dados',
+ 7000.00,
+ DATE '2025-10-15',
+ 1,
+ 'AVANCADO',
+ 'REMOTO',
+ 'FUNDAMENTAL',
+ 'RJ',
+ 75,
+ 2,
+ 'O analista de dados irá coletar, tratar e analisar dados para apoiar decisões estratégicas, construindo dashboards e relatórios automatizados. No cotidiano, trabalhará com equipes de marketing e produto, interpretando informações e propondo insights que gerem impacto direto nos resultados da empresa.'
+),
+(
+ 'Dev Frontend React',
+ 7800.00,
+ DATE '2025-11-20',
+ 2,
+ 'INTERMEDIARIO',
+ 'PRESENCIAL',
+ 'GRADUACAO',
+ 'SP',
+ 70,
+ 1,
+ 'O desenvolvedor frontend React será responsável pela construção de interfaces modernas e responsivas, garantindo boa experiência ao usuário e integração eficiente com APIs. No dia a dia participará de reuniões de alinhamento, desenvolverá componentes reutilizáveis e colaborará com o design para evoluir continuamente o produto.'
+),
+(
+ 'Suporte Técnico',
+ 3500.00,
+ DATE '2025-09-30',
+ 1,
+ 'BASICO',
+ 'PRESENCIAL',
+ 'MEDIO',
+ 'MG',
+ 35,
+ 3,
+ 'O profissional de suporte técnico prestará atendimento direto aos usuários, solucionando dúvidas, incidentes e registrando ocorrências no sistema. Sua rotina envolve abertura de chamados, testes básicos de hardware e software e acompanhamento de problemas até a resolução completa.'
+),
+(
+ 'Cientista de Dados',
+ 12000.00,
+ DATE '2025-12-15',
+ 3,
+ 'AVANCADO',
+ 'REMOTO',
+ 'POS',
+ 'SP',
+ 15,
+ 2,
+ 'O cientista de dados será responsável por desenvolver modelos preditivos, explorar grandes volumes de dados e construir soluções inteligentes que contribuam para decisões estratégicas. O dia a dia inclui análise estatística, experimentação, criação de pipelines e trabalho conjunto com equipes de engenharia e negócios.'
+);
+
 
 -- ===============================
 -- INSERT SKILLS DAS VAGAS

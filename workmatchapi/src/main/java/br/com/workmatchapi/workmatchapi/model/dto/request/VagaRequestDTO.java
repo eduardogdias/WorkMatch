@@ -16,6 +16,9 @@ public record VagaRequestDTO(
         @NotBlank(message = "O cargo é obrigatório")
         String cargo,
 
+        @NotBlank(message = "A descrição é obrigatório")
+        String descricao,
+
         @NotNull(message = "O salário é obrigatório")
         @Positive(message = "O salário deve ser maior que R$0,00")
         Double salario,

@@ -27,6 +27,9 @@ public class Vaga {
 
     private String cargo;
 
+    @Column(columnDefinition = "VARCHAR(MAX)")
+    private String descricao;
+
     private Double salario;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -64,8 +67,9 @@ public class Vaga {
 
     // construtor sem id
 
-    public Vaga(String cargo, Double salario, Date dataFim, int experiencia, NivelIngles nivelIngles, ModeloTrabalho modeloTrabalho, Formacao formacao, Estado estado, int match, List<String> skills, Empresa empresa) {
+    public Vaga(String cargo, String descricao, Double salario, Date dataFim, int experiencia, NivelIngles nivelIngles, ModeloTrabalho modeloTrabalho, Formacao formacao, Estado estado, int match, List<String> skills, Empresa empresa) {
         this.cargo = cargo;
+        this.descricao = descricao;
         this.salario = salario;
         this.dataFim = dataFim;
         this.experiencia = experiencia;

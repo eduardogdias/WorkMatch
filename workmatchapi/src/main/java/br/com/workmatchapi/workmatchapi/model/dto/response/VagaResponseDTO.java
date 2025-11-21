@@ -15,6 +15,7 @@ import java.util.List;
 public record VagaResponseDTO(
         Long id,
         String cargo,
+        String descricao,
         Double salario,
         @JsonFormat(pattern = "yyyy-MM-dd")
         Date dataFim,
