@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Minhas Candidaturas</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 3px 7px rgba(0,0,0,0.1);
+        }
+
+        /* Cabeçalho com vaga e match */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h2 {
+            margin: 0;
+            color: #444;
+        }
+
+        .match {
+            font-size: 16px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        /* Grid 2 colunas */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 40px;
+            margin-top: 20px;
+        }
+
+        .grid p {
+            margin: 0 0 10px;
+            color: #444;
+        }
+
+        .grid strong {
+            color: #222;
+        }
+
+        /* Skills */
+        .skills {
+            margin-top: 15px;
+        }
+        .habilidades {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: #23a8f2;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin: 5px 8px 0 0;
+            font-size: 13px;
+        }
+
+        /* Botão Cancelar */
+        .btn-cancelar {
+            display: inline-block;
+
+            padding: 12px 17px;
+            background: #dc3545;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-cancelar:hover {
+            background: #b52b38;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Minhas Candidaturas</h1>
+
+    <div th:each="c : ${candidaturas}" class="card">
+
+        <!-- Cabeçalho com Cargo + Match -->
+        <div class="header">
+            <h2 th:text="${c.vaga.cargo}">Cargo</h2>
+            <span class="match">Match: <span th:text="${c.vaga.match}"></span></span>
+        </div>
+
+        <!-- 2 colunas -->
+        <div class="grid">
+
+            <!-- Coluna 1 -->
+            <div>
+                <p><strong>Empresa:</strong>
+                    <span th:text="${c.vaga.empresa.nome}"></span>
+                </p>
+
+                <p><strong>Salário:</strong> R$
+                    <span th:text="${c.vaga.salario}"></span>
+                </p>
+
+                <p><strong>Data limite:</strong>
+                    <span th:text="${#dates.format(c.vaga.dataFim, 'dd/MM/yyyy')}"></span>
+                </p>
+
+                <p><strong>Modelo:</strong>
+                    <span th:text="${c.vaga.modeloTrabalho}"></span>
+                </p>
+            </div>
+
+            <!-- Coluna 2 -->
+            <div>
+                <p><strong>Formação:</strong>
+                    <span th:text="${c.vaga.formacao}"></span>
+                </p>
+
+                <p><strong>Estado:</strong>
+                    <span th:text="${c.vaga.estado}"></span>
+                </p>
+
+                <p><strong>Experiência:</strong>
+                    <span th:text="${c.vaga.experiencia}"></span> anos
+                </p>
+
+                <p><strong>Inglês:</strong>
+                    <span th:text="${c.vaga.nivelIngles}"></span>
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Skills -->
+        <div class="skills">
+            <strong>Skills:</strong><br>
+            <div class="habilidades">
+                <div th:each="skill : ${c.vaga.skills}">
+                    <span class="skill-tag" th:text="${skill}"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Data da candidatura -->
+        <p style="margin-top: 15px;">
+            <strong>Data da Candidatura:</strong>
+            <span th:text="${#dates.format(c.dataCandidatura, 'dd/MM/yyyy')}"></span>
+        </p>
+
+        <!-- Botão -->
+        <a th:href="@{'/web/candidaturas/' + ${c.id} + '/cancelar'}"
+           class="btn-cancelar">
+            Cancelar inscrição
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -9,7 +9,7 @@ import java.util.Date;
 public record CandidaturaResponseDTO(
         Long id,
         Vaga vaga,
-        Curriculo curriculo,
+        CurriculoResponseDTO curriculo,
         @JsonFormat(pattern = "yyyy-MM-dd")
         Date dataCandidatura
 ) {

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vagas Disponíveis</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .vaga-card {
+            background: #fff;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 3px 7px rgba(0,0,0,0.1);
+        }
+
+        /* Cabeçalho da vaga: nome + match */
+        .vaga-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .vaga-header h2 {
+            margin: 0;
+            color: #444;
+        }
+
+        .match-label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        /* GRID DE 2 COLUNAS */
+        .vaga-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 40px;
+            margin-top: 20px;
+        }
+
+        .vaga-item p {
+            margin: 0 0 10px;
+            color: #444;
+        }
+
+        .vaga-item strong {
+            color: #222;
+        }
+
+        /* Skills alinhadas horizontalmente */
+        .skills {
+            margin-top: 15px;
+        }
+
+        .habilidades {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: #23a8f2;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin: 5px 8px 0 0;
+            font-size: 13px;
+        }
+
+        .botao {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 17px;
+            background: #28a745;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .botao:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <h1>Vagas Disponíveis</h1>
+
+    <div th:each="vaga : ${vagas}" class="vaga-card">
+
+        <!-- Cabeçalho: Nome da vaga + Match -->
+        <div class="vaga-header">
+            <h2 th:text="${vaga.cargo}">Cargo</h2>
+            <span class="match-label">Match: <span th:text="${vaga.match}"></span></span>
+        </div>
+
+        <!-- GRID em 2 colunas -->
+        <div class="vaga-grid">
+
+            <!-- Coluna ESQUERDA -->
+            <div class="vaga-item">
+                <p><strong>Empresa:</strong> <span th:text="${vaga.empresa.nome}"></span></p>
+                <p><strong>Salário:</strong> R$ <span th:text="${vaga.salario}"></span></p>
+                <p><strong>Data limite:</strong> <span th:text="${#dates.format(vaga.dataFim, 'dd/MM/yyyy')}"></span></p>
+                <p><strong>Modelo:</strong> <span th:text="${vaga.modeloTrabalho}"></span></p>
+            </div>
+
+            <!-- Coluna DIREITA -->
+            <div class="vaga-item">
+                <p><strong>Formação:</strong> <span th:text="${vaga.formacao}"></span></p>
+                <p><strong>Estado:</strong> <span th:text="${vaga.estado}"></span></p>
+                <p><strong>Experiência:</strong> <span th:text="${vaga.experiencia}"></span> anos</p>
+                <p><strong>Inglês:</strong> <span th:text="${vaga.nivelIngles}"></span></p>
+            </div>
+
+        </div>
+
+        <!-- Skills -->
+        <div class="skills">
+            <strong>Skills:</strong><br>
+            <div class="habilidades">
+                <div th:each="skill : ${vaga.skills}">
+                    <span class="skill-tag" th:text="${skill}"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Botão -->
+        <a class="botao"
+           th:href="@{'/web/vagas/' + ${vaga.id} + '/inscrever'}">
+            Candidatar-se
+        </a>
+
+    </div>
+
+</div>
+</body>
+</html>
