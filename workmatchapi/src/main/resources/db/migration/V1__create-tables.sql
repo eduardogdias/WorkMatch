@@ -2,7 +2,7 @@
 -- CREATE TABLE EMPRESA
 -- ====================================
 CREATE TABLE TB_EMPRESA (
-    id IDENTITY PRIMARY KEY,
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     cnpj VARCHAR(14) UNIQUE NOT NULL,
     email VARCHAR(255),
@@ -13,7 +13,7 @@ CREATE TABLE TB_EMPRESA (
 -- CREATE TABLE USUARIO
 -- ====================================
 CREATE TABLE TB_USUARIO (
-    id IDENTITY PRIMARY KEY,
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     telefone VARCHAR(11),
@@ -26,7 +26,7 @@ CREATE TABLE TB_USUARIO (
 -- CREATE TABLE CURRICULO
 -- ====================================
 CREATE TABLE TB_CURRICULO (
-    id IDENTITY PRIMARY KEY,
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
     formacao VARCHAR(50),
     experiencia INT,
     nivel_ingles VARCHAR(50),
@@ -46,9 +46,9 @@ CREATE TABLE curriculo_skills (
 -- CREATE TABLE VAGA
 -- ====================================
 CREATE TABLE TB_VAGA (
-    id IDENTITY PRIMARY KEY,
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
     cargo VARCHAR(255),
-    salario DOUBLE,
+    salario FLOAT,
     data_fim DATE,
     experiencia INT,
     nivel_ingles VARCHAR(50),
@@ -61,7 +61,6 @@ CREATE TABLE TB_VAGA (
     CONSTRAINT fk_vaga_empresa FOREIGN KEY (empresa_id) REFERENCES TB_EMPRESA(id)
 );
 
-
 -- tabela skills da vaga
 CREATE TABLE vaga_skills (
     vaga_id BIGINT NOT NULL,
@@ -73,7 +72,7 @@ CREATE TABLE vaga_skills (
 -- CREATE TABLE CANDIDATURA
 -- ====================================
 CREATE TABLE TB_CANDIDATURA (
-    id IDENTITY PRIMARY KEY,
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
     vaga_id BIGINT NOT NULL,
     curriculo_id BIGINT NOT NULL,
     data_candidatura DATE,
