@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/workmatchapi/pom.xml" />
         <option value="$PROJECT_DIR$/workmatchemail/pom.xml" />
+        <option value="$PROJECT_DIR$/RabbitmqSpringEmail/pom.xml" />
       </list>
     </option>
   </component>

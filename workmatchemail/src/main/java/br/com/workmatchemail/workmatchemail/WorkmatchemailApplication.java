@@ -1,13 +1,15 @@
 package br.com.workmatchemail.workmatchemail;
 
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@EnableRabbit
 @SpringBootApplication
 public class WorkmatchemailApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WorkmatchemailApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WorkmatchemailApplication.class, args);
+    }
 
 }
