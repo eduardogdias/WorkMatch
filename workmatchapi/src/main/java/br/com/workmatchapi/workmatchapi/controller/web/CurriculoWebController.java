@@ -80,7 +80,7 @@ public class CurriculoWebController {
         existente.setNivelIngles(curriculo.getNivelIngles());
         existente.setEstado(curriculo.getEstado());
 
-        // 🔥 LISTA MUTÁVEL
+
         List<String> novasSkills = Arrays.stream(skillsString.split(","))
                 .map(String::trim)
                 .collect(Collectors.toList());
