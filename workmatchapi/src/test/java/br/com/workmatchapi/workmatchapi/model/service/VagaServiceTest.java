@@ -8,6 +8,7 @@ import br.com.workmatchapi.workmatchapi.model.entity.Vaga;
 import br.com.workmatchapi.workmatchapi.model.enums.*;
 import br.com.workmatchapi.workmatchapi.model.exception.EntidadeNaoEncontrada;
 import br.com.workmatchapi.workmatchapi.model.mapper.VagaMapper;
+import br.com.workmatchapi.workmatchapi.model.repository.UsuarioRepository;
 import br.com.workmatchapi.workmatchapi.model.repository.VagaRepository;
 
 
@@ -23,6 +24,9 @@ import static org.mockito.Mockito.*;
 
 
 public class VagaServiceTest {
+
+    @Mock
+    private UsuarioRepository usuarioRepository;
 
     @Mock
     private VagaRepository repository;
@@ -50,7 +54,7 @@ public class VagaServiceTest {
         empresa.setNome("Empresa Teste");
 
         vaga = new Vaga(
-                "Dev Java", 5000.0, new Date(), 2,
+                "Dev Java", "O profissional deverá atuar principalmente com java", 5000.0, new Date(), 2,
                 NivelIngles.BASICO, ModeloTrabalho.PRESENCIAL,
                 Formacao.GRADUACAO, Estado.SP, 80, List.of("Java", "Spring"), empresa
         );
@@ -58,6 +62,7 @@ public class VagaServiceTest {
 
         dto = new VagaRequestDTO(
                 "Dev Java",
+                "O profissional deverá atuar principalmente com java",
                 5000.0,
                 new Date(),
                 2,
@@ -71,7 +76,7 @@ public class VagaServiceTest {
         );
 
         response = new VagaResponseDTO(
-                10L, "Dev Java", 5000.0, new Date(), 2,
+                10L, "Dev Java", "O profissional deverá atuar principalmente com java",5000.0, new Date(), 2,
                 NivelIngles.BASICO, ModeloTrabalho.PRESENCIAL,
                 Formacao.GRADUACAO, "São Paulo", 80,
                 List.of("Java", "Spring"), empresa

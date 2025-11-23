@@ -88,7 +88,7 @@ Exemplo de requisição:
 ## Configuração dos Projetos
 
 ### 1. API
-![Imagem do projeto](images/dependencias/api.png)
+![](images/dependencias/api.png)
 **Dependências:**
 - Spring Web: Por se tratar de uma API Rest.
 - Spring Data JPA: Acessar e manipular bancos de dados.
@@ -105,7 +105,7 @@ Exemplo de requisição:
 
  
 ### 2. Microsserviço de Email
-![Imagem do projeto](images/dependencias/email.png)
+![](images/dependencias/email.png)
 **Dependências (inéditas):**
 - Java Mail Sender: Envio de Emails.
 - Spring for RabbitMQ: Escutar fila da mensageria.
